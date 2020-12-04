@@ -1,16 +1,23 @@
-#include <iostream>
-#include <GLFW/glfw3.h>
 #include "graphics/window.h"
-using namespace std;
 using namespace MyOwnEngine;
 using namespace graphics;
 int main()
 {
 	Window engine("Maxi Ruffo ~ Engine", 800, 600);
+	GLuint vao;
+	glGenVertexArrays(1,&vao);
+	glBindVertexArray(vao);
 	while (!engine.Closed())
 	{
+#if 0
+		glBegin(GL_TRIANGLES);
+		glVertex2f(-0.5f, -0.5f);
+		glVertex2f(-0.0f, 0.5f);
+		glVertex2f(0.5f, -0.5f);
+		glEnd();
+#endif
+		glDrawArrays(GL_ARRAY_BUFFER,0,0);
 		engine.Update();
 	}
-	system("PAUSE");
 	return 0;
 }
